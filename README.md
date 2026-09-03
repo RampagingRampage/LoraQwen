@@ -24,8 +24,7 @@ worked against the source, not just against loss going down. A chat tab
 talks to the result.
 
 Voice is a separate, optional track: record and clone anyone's voice and
-attach it to any character — it doesn't have to be the same person the text
-persona was built from.
+attach it to any character.
 
 ## The tabs
 
