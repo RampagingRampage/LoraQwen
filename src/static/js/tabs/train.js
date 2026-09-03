@@ -63,7 +63,7 @@ Forge.tab('train', (() => {
             ${Forge.field('Eval split %', Forge.num('trEval', t.eval_split_pct, { min: 0, max: 50 }),
               '0 = no eval curve')}
             ${Forge.field('Seed', Forge.num('trSeed', t.seed, { min: 0 }))}
-            ${Forge.field('Log every N steps', Forge.num('trLog', t.logging_steps, { min: 1, max: 100 }))}
+            ${Forge.field('Log every N steps', Forge.num('trLogSteps', t.logging_steps, { min: 1, max: 100 }))}
             ${Forge.field('Save every N steps', Forge.num('trSave', t.save_steps, { min: 10 }))}
           </div>
           ${Forge.field('Target modules', `<input type="text" id="trTargets" class="mono" value="${
@@ -162,7 +162,7 @@ Forge.tab('train', (() => {
       lr_scheduler: Forge.val('trSched'),
       eval_split_pct: Forge.numv('trEval', 10),
       seed: Forge.numv('trSeed', 42),
-      logging_steps: Forge.numv('trLog', 5),
+      logging_steps: Forge.numv('trLogSteps', 5),
       save_steps: Forge.numv('trSave', 200),
       target_modules: Forge.val('trTargets'),
     };
