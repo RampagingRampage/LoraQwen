@@ -11,14 +11,6 @@ lora_env\Scripts\python src\app.py
 Then open <http://localhost:5000>. First time on a machine, see
 [Setup](#setup) below.
 
-> No `.bat` launchers are included in this repo — Windows tags `.bat` files
-> downloaded from GitHub (as a ZIP, or sometimes via clone) with the
-> Mark-of-the-Web, which trips SmartScreen and script-execution warnings. The
-> commands below are what those scripts would have run; paste any of them
-> into your own `run.bat` / `install.bat` if you want the double-click
-> convenience back — they're plain, harmless commands, Windows just doesn't
-> trust `.bat` files it didn't create itself.
-
 ---
 
 ## What it does
