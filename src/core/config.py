@@ -153,7 +153,7 @@ TRAIN_DEFAULTS = {
     "num_epochs":     _i("TRAIN_EPOCHS", 3),
     "batch_size":     _i("TRAIN_BATCH", 2),
     "grad_accum":     _i("TRAIN_GRAD_ACCUM", 4),
-    "learning_rate":  _f("TRAIN_LR", 2e-4),
+    "learning_rate":  _f("TRAIN_LR", 1.5e-4),
     "warmup_ratio":   _f("TRAIN_WARMUP", 0.03),
     "lr_scheduler":   _s("TRAIN_SCHEDULER", "cosine"),
     "logging_steps":  _i("TRAIN_LOG_STEPS", 5),
@@ -168,7 +168,7 @@ TRAIN_PRESETS = {
                  "label": "Quick",    "note": "Sanity pass on a new dataset. ~10 min."},
     "standard": {"lora_rank": 16, "lora_alpha": 32, "num_epochs": 3,
                  "label": "Standard", "note": "Known-good baseline. Bob was trained this way."},
-    "deep":     {"lora_rank": 32, "lora_alpha": 64, "num_epochs": 5,
+    "deep":     {"lora_rank": 32, "lora_alpha": 64, "num_epochs": 3,
                  "label": "Deep",     "note": "For datasets past ~800 examples. More VRAM."},
 }
 

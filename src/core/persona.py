@@ -681,7 +681,7 @@ def train_persona(persona_name, model_name="Qwen/Qwen3-8B", epochs=3, rank=16):
         "max_seq_length": 1024,
         "lora_rank": rank, "lora_alpha": rank * 2, "lora_dropout": 0.05,
         "num_epochs": epochs, "batch_size": 2, "grad_accum": 4,
-        "learning_rate": 2e-4, "logging_steps": 5, "save_steps": 200,
+        "learning_rate": 1.5e-4, "logging_steps": 5, "save_steps": 200,
     }
     print(f"▶ Training LoRA '{persona_name}' on {model_name} ({dataset_path})")
     pipeline.reset_state(persona_name)

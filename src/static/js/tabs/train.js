@@ -157,7 +157,7 @@ Forge.tab('train', (() => {
       num_epochs: Forge.numv('trEpochs', 3),
       batch_size: Forge.numv('trBatch', 2),
       grad_accum: Forge.numv('trAccum', 4),
-      learning_rate: Forge.numv('trLr', 0.0002),
+      learning_rate: Forge.numv('trLr', 0.00015),
       warmup_ratio: Forge.numv('trWarmup', 0.03),
       lr_scheduler: Forge.val('trSched'),
       eval_split_pct: Forge.numv('trEval', 10),

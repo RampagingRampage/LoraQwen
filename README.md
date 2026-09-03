@@ -58,6 +58,13 @@ The Data tab can generate training examples three ways:
   as a live run. It's just a plain JSON file on disk; anything you can point
   at a file works, Claude Code is simply what this was built against.
 
+Generating with something more capable than the 8B base model produces
+better data — Claude Code or another strong model beats the local engine
+generating its own training data. The same goes for cleaning: before
+training, run the dataset past a strong model and have it flag repetitive or
+low-quality rows for you to fix or cut. The Data tab's dedupe only catches
+near-identical text; it won't catch a row that's just generic or wrong.
+
 ## Setup
 
 ```powershell
@@ -213,6 +220,9 @@ another drive.
 
 ## Notes worth knowing
 
+- **300-400 good examples is plenty.** More doesn't reliably help and raises
+  the odds of overfitting. Defaults are tuned for that range: learning rate
+  0.00015, 3 epochs.
 - **Stop the engine before training.** Two processes on one GPU is the most
   common out-of-memory failure. A "Stop" button lives in the top bar on every
   tab so you don't have to go find the Engine tab first.
