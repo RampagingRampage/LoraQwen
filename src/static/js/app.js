@@ -182,8 +182,19 @@ const Forge = (() => {
     const st = (s && s.status) || 'stopped';
     dot.className = 'dot ' + (st === 'ready' ? 'ok' : st === 'starting' ? 'busy' : st === 'error' ? 'crit' : '');
     pill.lastChild.textContent = ' Engine · ' + st;
+    const stopBtn = document.getElementById('engineStopBtn');
+    if (stopBtn) stopBtn.hidden = (st === 'stopped');
     state.engine = s;
   }
+
+  // Quick stop from anywhere in the app — the engine and training fight over
+  // the same GPU, so this needs to be reachable without a trip to the Engine
+  // tab first.
+  const stopEngine = safe(async () => {
+    await post('/api/engine/stop');
+    ok('Engine stopped');
+    schedulePoll(150);
+  });
 
   // ── global status poll (train / generate / engine) ─────
   // Adaptive cadence. A fixed fast poll here plus each tab's own poll opens a
@@ -256,6 +267,7 @@ const Forge = (() => {
     document.querySelectorAll('[data-go]').forEach(b => {
       b.addEventListener('click', () => go(b.dataset.go));
     });
+    document.getElementById('engineStopBtn').addEventListener('click', stopEngine);
     document.getElementById('modalBg').addEventListener('click', (e) => {
       if (e.target.id === 'modalBg') closeModal();
     });

@@ -223,7 +223,8 @@ another drive.
 ## Notes worth knowing
 
 - **Stop the engine before training.** Two processes on one GPU is the most
-  common out-of-memory failure.
+  common out-of-memory failure. A "Stop" button lives in the top bar on every
+  tab so you don't have to go find the Engine tab first.
 - **`llama-server.exe` outlives its parent on Windows.** Use the Engine tab's
   "Kill orphans", or `taskkill /F /IM llama-server.exe /T` (see
   [Setup](#setup)).
