@@ -198,7 +198,23 @@ def rel(path):
 
 
 def abspath(path):
-    """Inverse of rel(): resolve a stored path back to something openable."""
+    """Inverse of rel(): resolve a stored path back to something openable.
+
+    rel() is meant to store paths relative to PROJECT_ROOT ("data/gguf_output/x.gguf"),
+    but a few writers (the Characters-tab adapter/base-GGUF dropdowns, persona.py's
+    CLI registration path) have stored paths relative to GGUF_DIR instead
+    ("gguf_output/x.gguf", missing the "data/" segment) — those silently failed to
+    resolve here, which showed up as "adapter ... missing, skipping" at engine start
+    with no error surfaced anywhere else. Try the documented PROJECT_ROOT-relative
+    form first; fall back to resolving against GGUF_DIR's parent (DATA_ROOT) for the
+    older/inconsistent form before giving up.
+    """
     if not path:
         return path
-    return path if os.path.isabs(path) else os.path.join(PROJECT_ROOT, path)
+    if os.path.isabs(path):
+        return path
+    primary = os.path.join(PROJECT_ROOT, path)
+    if os.path.exists(primary):
+        return primary
+    fallback = os.path.join(DATA_ROOT, path)
+    return fallback if os.path.exists(fallback) else primary

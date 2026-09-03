@@ -44,11 +44,11 @@ Forge.tab('characters', (() => {
         <div class="card">
           <div class="card-head"><h3>Model &amp; voice</h3></div>
           ${Forge.field('Base GGUF', Forge.sel('cBase',
-            [['', '(engine default)']].concat((boot.base_ggufs || []).map(b => ['gguf_output/' + b.name, b.name])),
+            [['', '(engine default)']].concat((boot.base_ggufs || []).map(b => ['data/gguf_output/' + b.name, b.name])),
             c.base_gguf).replace('id="__x"', 'id="cBase"'))}
           ${Forge.field('Adapter GGUF', Forge.sel('cAdapter',
             [['', '(none — base model only)']].concat(
-              (boot.adapters || []).map(a => ['gguf_output/' + a.name, a.name])),
+              (boot.adapters || []).map(a => ['data/gguf_output/' + a.name, a.name])),
             c.adapter_gguf).replace('id="__x"', 'id="cAdapter"'),
             c.adapter_gguf ? '' : 'without one this is just a prompt')}
           ${Forge.field('Voice', `<select id="cVoice">
