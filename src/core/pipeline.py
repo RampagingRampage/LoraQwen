@@ -131,6 +131,19 @@ def normalize_record(raw):
     if not inst or not out:
         return None
     inp  = str(raw.get("input", "")).strip()
+    # dataset.py stores reasoning as its own top-level key (that's what lets
+    # the Data tab show/edit it separately from the visible answer) but this
+    # is the only place alpaca-shaped rows get turned into what actually
+    # trains — build_training_text only recognizes reasoning that's already
+    # inside the assistant turn as a leading <think>...</think>. Without
+    # this merge, any row with a separate "reasoning" key (every alpaca-
+    # style row the Data tab itself produces, plus any external import
+    # using that same documented key) silently trains with zero reasoning
+    # and no error — the exact thing the "no reasoning found" warning below
+    # is supposed to catch, defeated at the source.
+    reasoning = str(raw.get("reasoning", "") or raw.get("thinking", "")).strip()
+    if reasoning and not out.lstrip("\n").startswith("<think>"):
+        out = f"<think>\n{reasoning}\n</think>\n\n{out}"
     user = (inst + ("\n\n" + inp if inp else "")).strip()
     msgs = [{"role": "user", "content": user},
             {"role": "assistant", "content": out}]
