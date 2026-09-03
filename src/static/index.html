@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LoraQwen Forge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+
+<div id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">◈</span>
+      <span>LoraQwen Forge</span>
+      <span class="sub" id="rootPath"></span>
+    </div>
+    <div class="spacer"></div>
+    <span class="pill" id="trainPill" hidden></span>
+    <span class="pill" id="genPill" hidden></span>
+    <button class="btn sm" id="enginePill" data-go="engine">
+      <span class="dot" id="engineDot"></span> Engine
+    </button>
+    <button class="btn sm icon" id="themeBtn" title="Toggle light / dark">◐</button>
+  </header>
+
+  <div class="shell">
+    <nav class="rail" id="rail">
+      <div class="group">Use</div>
+      <button data-tab="chat"><span class="ico">💬</span> Inference</button>
+      <button data-tab="feed"><span class="ico">◉</span> Feed</button>
+      <button data-tab="characters"><span class="ico">☺</span> Characters</button>
+
+      <div class="group">Build</div>
+      <button data-tab="persona"><span class="ico">◇</span> Persona</button>
+      <button data-tab="data"><span class="ico">▤</span> Data</button>
+      <button data-tab="train"><span class="ico">▲</span> Train</button>
+      <button data-tab="evaluate"><span class="ico">◎</span> Evaluate</button>
+      <button data-tab="voice"><span class="ico">🎙</span> Voice</button>
+
+      <div class="group">System</div>
+      <button data-tab="engine"><span class="ico">⚙</span> Engine</button>
+      <button data-tab="about"><span class="ico">◈</span> About</button>
+      <button data-tab="help"><span class="ico">?</span> Help</button>
+    </nav>
+
+    <main class="stage">
+      <section class="view flush" id="view-chat"></section>
+      <section class="view flush" id="view-feed"></section>
+      <section class="view" id="view-characters"></section>
+      <section class="view" id="view-persona"></section>
+      <section class="view" id="view-data"></section>
+      <section class="view" id="view-train"></section>
+      <section class="view" id="view-evaluate"></section>
+      <section class="view" id="view-voice"></section>
+      <section class="view" id="view-engine"></section>
+      <section class="view" id="view-about"></section>
+      <section class="view" id="view-help"></section>
+    </main>
+  </div>
+</div>
+
+<div id="toasts"></div>
+<div class="modal-bg" id="modalBg" hidden><div class="modal" id="modal"></div></div>
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/tabs/chat.js"></script>
+<script src="/static/js/tabs/feed.js"></script>
+<script src="/static/js/tabs/characters.js"></script>
+<script src="/static/js/tabs/persona.js"></script>
+<script src="/static/js/tabs/data.js"></script>
+<script src="/static/js/tabs/train.js"></script>
+<script src="/static/js/tabs/evaluate.js"></script>
+<script src="/static/js/tabs/voice.js"></script>
+<script src="/static/js/tabs/engine.js"></script>
+<script src="/static/js/tabs/about.js"></script>
+<script src="/static/js/tabs/help.js"></script>
+<script>Forge.boot();</script>
+</body>
+</html>

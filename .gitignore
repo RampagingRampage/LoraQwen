@@ -1,0 +1,36 @@
+# Environments -- cannot be relocated, rebuilt from requirements*.txt (see
+# README's Setup section)
+lora_env/
+voice_env/
+__pycache__/
+*.pyc
+
+# Third-party binaries and scratch state
+runtime/
+
+# Windows tags downloaded/zipped .bat files with Mark-of-the-Web, which trips
+# SmartScreen and script-execution warnings for anyone who isn't technical.
+# Keep these local-only -- README has the equivalent commands to run by hand
+# or paste into your own script.
+*.bat
+
+# Everything you make. Large, machine-specific, or personal -- back these up
+# yourself; they are not source code. Only the training_input README (usage
+# instructions) is tracked -- everything else under data/ is generated or
+# personal: characters, chat logs, datasets, DPO preference pairs, trained
+# adapters, downloaded models, voice recordings, and eval runs.
+data/*
+!data/training_input/
+data/training_input/*
+!data/training_input/README.md
+
+# Generated audio (the app's static dir, and a stray root-level one some
+# code paths write to)
+src/static/audio/
+static/audio/
+
+# Claude Code local session state -- not part of the app
+.claude/
+
+# Local config (.env.example is the tracked template)
+.env
