@@ -34,3 +34,6 @@ static/audio/
 
 # Local config (.env.example is the tracked template)
 .env
+
+# Design notes / working plans -- not part of the shipped app
+plans/
